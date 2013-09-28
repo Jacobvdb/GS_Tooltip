@@ -1,0 +1,233 @@
+
+<link rel="stylesheet" href="https://googledrive.com/host/0B0ZRNaEV_saPRnRmbTZmOF9vMWM/style_devtest.css"/>
+<style>
+
+body {
+  width:98%
+  ;margin-left:auto
+  ;margin-right:auto
+  ;height:900px
+  ;background-color:transparent
+  ;font-family: arial, sans-serif
+  ;font-size: 13px
+  ;color:black 
+  ;padding-left: 25px
+  ;padding-top:25px
+}
+
+#left
+{
+  display: inline-block
+  ;width:49%
+  ;
+}
+
+#right
+{
+  display: inline-block
+  ;vertical-align:top
+  ;width:49%
+  ;
+}
+
+#title
+{ 
+  display:inline-block
+  ;overflow:hidden
+  ;cursor:pointer
+  ;font-size:20px
+  ;font-weight:normal
+  ;padding-left:5px
+  ;padding-right:5px
+  ;padding-top:1px
+  ;padding-bottom:2px
+  ;margin-bottom:2px
+}
+#samplearea
+{
+  text-align:center
+  ;width:250px
+  ;margin-left:20%
+  ;margin-top:100px
+  ;background-color:#f0f0f0
+  ;padding:20px
+}
+
+#sampletitle
+{
+  margin-bottom:5px
+  ;font-size:20px
+  ;font-weight:bold
+}
+
+
+.testpc
+{
+ display:inline; 
+}
+
+.testpc:hover{font-weight:bolder}
+
+/*  From here on is the tooltip */
+
+.test
+{ 
+  display:inline-block
+  ;overflow:hidden
+  ;cursor:pointer
+  ;font-size:12px
+  ;font-weight:normal
+  ;padding-left:5px
+  ;padding-right:5px
+  ;padding-top:1px
+  ;padding-bottom:2px
+  ;margin-bottom:2px
+}
+
+
+
+/* Tooltip that goes on top of the text */
+.tooltip_top {
+    color:#fff
+    ;opacity:1
+    ;margin:6px
+    ;padding-top:5px
+    ;padding-left:8px
+    ;padding-right:8px
+    ;padding-bottom:5px
+    
+}
+
+.tooltip_top:after,
+.tooltip_top:before {
+	position: absolute;
+	top: 100%;
+	width: 0;
+	height: 0;
+	border: solid transparent;
+	content: " ";
+	pointer-events: none;
+}
+
+.tooltip_top:after {
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-top-color: inherit;
+}
+
+
+/* Tooltip that goes to the left of the text */
+.tooltip_left {
+    color:#fff
+    ;opacity:1
+    ;margin:6px
+    ;padding-top:5px
+    ;padding-left:8px
+    ;padding-right:8px
+    ;padding-bottom:5px
+    
+}
+
+.tooltip_left:after,
+.tooltip_left:before {
+	position: absolute;
+	left: 106%;
+	width: 0;
+	height: 0;
+	border: solid transparent;
+	content: " ";
+	pointer-events: none;
+}
+
+.tooltip_left:before {
+	left: 106%;
+	margin-left: -8px;
+	border-width: 8px;
+	border-left-color: inherit;
+}
+
+/* Tooltip that goes to the right of the text */
+.tooltip_right {
+    color:#fff
+    ;opacity:1
+    ;margin:6px
+    ;padding-top:5px
+    ;padding-left:8px
+    ;padding-right:8px
+    ;padding-bottom:5px
+    
+}
+
+.tooltip_right:after,
+.tooltip_right:before {
+	position: absolute;
+	right: -15px;
+	width: 0;
+	height: 0;
+	border: solid transparent;
+	content: " ";
+	pointer-events: none;
+}
+
+.tooltip_right:before {
+	left: -15px;
+    top:50%
+	margin-left: -8px;
+	border-width: 8px;
+	border-right-color: inherit;
+}
+
+/* Tooltip that goes bellow of the text */
+.tooltip_bottom {
+    color:#fff
+    ;opacity:1
+    ;margin:6px
+    ;padding-top:5px
+    ;padding-left:8px
+    ;padding-right:8px
+    ;padding-bottom:5px
+    
+}
+
+.tooltip_bottom:after,
+.tooltip_bottom:before {
+	position: absolute;
+	bottom: 100%;
+	width: 0;
+	height: 0;
+	border: solid transparent;
+	content: " ";
+	pointer-events: none;
+}
+
+.tooltip_bottom:after {
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-bottom-color: inherit;
+}
+
+/* Tooltip aspects black normal*/
+.tooltipnormal 
+{
+ background-color:#000
+ ;border-color:#000 
+}
+
+/* Tooltip aspects red warning*/
+.tooltipwarning
+{
+ background-color:#FF0000
+ ;border-color:#FF0000
+}
+
+/* Tooltip aspects blue info*/
+.tooltipinfo
+{
+ background-color:#0000FF
+ ;border-color:#0000FF
+}
+
+
+</style>

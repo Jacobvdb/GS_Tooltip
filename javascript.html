@@ -1,0 +1,191 @@
+<script>
+
+
+function focus(ttPosition,ttType,ttText,ttRect,divid,halfoffsetwidth) 
+{
+  
+  
+
+  if (  ttPosition == "bottom"|| ttPosition == "top"|| ttPosition == "left"|| ttPosition == "right" ) 
+  {
+   var toolTipPosition =ttPosition 
+   var toolTipType =ttType 
+   var tootTipText = ttText
+   var rect = ttRect
+   var divId = divid
+   var halfOffsetWidth=halfoffsetwidth
+  }
+  
+    try {      var atr = this.getAttribute("data-tooltipposition")}
+    catch(e) { var atr = null}
+    
+   if (atr)
+   {
+     this.style.backgroundColor = "rgba(0, 0, 0, .1)";
+     var toolTipPosition = this.getAttribute("data-tooltipposition");
+     var toolTipType = this.getAttribute("data-tooltiptype");
+     var tootTipText = this.getAttribute("data-toolTipText");
+     var rect = this.getBoundingClientRect();
+     var divId = this.id+"tt";
+     var halfOffsetWidth=this.offsetWidth/2;
+   }
+   // help for positioning
+   //console.log(rect.top + " " + rect.right+ " " + rect.bottom+ " " + rect.left);
+   
+   
+   // The lenght of our tooltip to put it in the middle of 
+   // the div it is refering to. Create a dummy first
+    var tempDiv = document.createElement('div');
+    document.body.appendChild(tempDiv);
+    tempDiv.style.fontSize = "10px";    // this should be the same as your style
+    tempDiv.style.position = "absolute";
+    tempDiv.style.left = -1000;
+    tempDiv.style.top = -1000;
+    tempDiv.innerHTML = tootTipText;
+    var width= (tempDiv.clientWidth + 22) ;   // add margins 
+    var height= (tempDiv.clientHeight +12) ;  // add margins
+    document.body.removeChild(tempDiv);
+    tempDiv = null;
+
+
+   var div = document.createElement('div');
+   div.id = divId
+   div.style.position = "absolute";
+   
+
+   var className ="";  
+   
+   /* where to place the tooltip */
+   if (toolTipPosition =="top")
+   {
+     className = className + "tooltip_top";
+     var top = rect.top - height -(height/2)
+     var left = rect.left + halfOffsetWidth*1 - (width / 2)
+     div.style.top = top +"px";
+     div.style.left = left +"px";
+   }
+   
+   if (toolTipPosition =="left")
+   {
+     className = className + "tooltip_left";
+     var top = rect.top - (height/2)
+     var left = rect.left - width - (20)
+     div.style.top = top +"px";
+     div.style.left = left +"px";
+
+   }
+   
+   if (toolTipPosition =="right")
+   {
+     className = className + "tooltip_right";
+     var top = rect.top - (height/2)
+     var left = rect.right + 6
+     div.style.top = top +"px";
+     div.style.left = left +"px";
+   }
+   
+   if (toolTipPosition =="bottom")
+   {
+     className = className + "tooltip_bottom";
+     var left = rect.left + halfOffsetWidth*1 - (width / 2)
+     // dont need top the margin itselve will do.
+     div.style.top = rect.bottom+"px";
+     div.style.left = left +"px";
+   }
+   
+   
+   
+   /* Assign the aspect the tooltip should have */
+   /* don't remove the space in front of the class */
+   if (toolTipType =="normal")
+   {
+     className = className + " tooltipnormal"; //black
+   }
+   
+   
+   if (toolTipType =="warning")
+   {
+     className = className + " tooltipwarning";  //red
+     
+   }
+   
+   
+   if (toolTipType =="info")
+   {
+     className = className + " tooltipinfo";  //blue
+   }
+   
+   div.className = className
+   
+   div.innerHTML = tootTipText; /* add the text to the tooltip */
+   document.body.appendChild(div);
+   
+
+    
+}
+
+
+function noFocus() 
+{
+  this.style.backgroundColor = "transparent";
+  document.getElementById(this.id+"tt").parentNode.removeChild(document.getElementById(this.id+"tt"))
+  
+}
+
+
+
+function bindtest()
+{
+   var toolTipPosition =this.getAttribute("data-tooltipposition") 
+   var toolTipType =this.getAttribute("data-tooltiptype") 
+   var rect = this.getBoundingClientRect()
+   var divid = this.id+"tt"
+   var halfOffSetWith = this.offsetWidth/2
+
+    google.script.run.withSuccessHandler(testJS)
+    .withFailureHandler(showError)
+    .testGS(toolTipPosition,toolTipType,rect,divid,halfOffSetWith);
+}
+
+function testJS(toolTipArray)
+{
+   var toolTipPosition = toolTipArray[0]
+   var toolTipType = toolTipArray[1]
+   var tootTipText = toolTipArray[2]
+   var rect = toolTipArray[3]
+   var divid = toolTipArray[4]
+   var halfoffsetwidth = toolTipArray[5]
+   
+   focus(toolTipPosition,toolTipType,tootTipText,rect,divid, halfoffsetwidth)
+}
+
+/* bind the elements mouseover event to the focus function */
+document.getElementById("title").addEventListener('mouseover',focus,false);
+document.getElementById("wtop").addEventListener('mouseover',focus,false);
+document.getElementById("wleft").addEventListener('mouseover',focus,false);
+document.getElementById("wright").addEventListener('mouseover',focus,false);
+document.getElementById("wbottom").addEventListener('mouseover',focus,false);
+
+document.getElementById("testp").addEventListener('mouseover',bindtest,false);
+
+/* bind the elements mouseout event to the focus function */
+document.getElementById("title").addEventListener('mouseout',noFocus,false);
+document.getElementById("wright").addEventListener('mouseout',noFocus,false);
+document.getElementById("wtop").addEventListener('mouseout',noFocus,false);
+document.getElementById("wleft").addEventListener('mouseout',noFocus,false);
+document.getElementById("wbottom").addEventListener('mouseout',noFocus,false);
+document.getElementById("testp").addEventListener('mouseout',noFocus,false);
+
+function showError(error) 
+{
+    console.log(error);
+    window.alert('An error has occurred, please try again.');
+}
+
+
+function pausecomp(ms) {
+ms += new Date().getTime();
+while (new Date() < ms){}
+} 
+
+</script>

@@ -1,0 +1,73 @@
+<?!= HtmlService.createHtmlOutputFromFile('style').getContent(); ?>
+<div>
+<!-- header -->
+<div id="header" >
+<div  id="header_title">DEV TEST </div>
+<div id="header_body" >
+<!--<div style="font-size:0.5em;color:3f3f3f;font-family:hobo std;margin-left:2px;margin-bottom:2px">&nbsp;</div>-->
+<div id="header_whitebody" >
+   <div id="header_imagebox" >
+  <div id="header_image" >
+      <a href="http://devtest.lagaroo.com.br/"><img border="0" height="53" src="https://lh5.googleusercontent.com/-f-ccmDRKdyw/Uay9ncWRU0I/AAAAAAAAHJE/lmSXi-PRpVs/w189-h177-no/DEVtest_.png"></a>
+  </div>
+     				  
+  <div id="header_image">
+      <a href="http://stackoverflow.com/questions/tagged/google-apps-script" ><img border="0" height="53" src="https://sites.google.com/a/lagaroo.com.br/dev-test/home/stackoverflow3.png?height=53&amp;width=200"  width="200"></a>         
+  </div>                
+  <div id="header_image">
+      <a href="http://upload.wikimedia.org/wikipedia/en/f/f2/Google_Apps_Script.png" ><img border="0" height="53" src="http://upload.wikimedia.org/wikipedia/en/f/f2/Google_Apps_Script.png"></a>
+  </div>
+</div>
+<div id="header_info"></div>
+</div>	
+</div>				
+</div>
+
+<div id="container" >
+
+<div id="left" style=>
+<div id="title"  data-tooltipposition="bottom" data-tooltiptype="normal" data-tooltiptext="Rename">GAS LIKE TOOLTIP</div>
+
+<br>
+<br>
+<div id="samplearea" >
+<div id="sampletitle">Example Area</div>
+
+<div id="wtop"    class="test" data-tooltipposition="top" data-tooltiptype="warning" data-tooltiptext="Warning Top">Error Top</div>
+<div>
+<div id="wleft"   class="test" data-tooltipposition="left" data-tooltiptype="warning" data-tooltiptext="Warning Left">Error Left</div>
+
+<div id="wright"  class="test" style="margin-left:80px" data-tooltipposition="right" data-tooltiptype="info" data-tooltiptext="Information Right">Info Right</div>
+</div>
+<div id="wbottom" class="test" data-tooltipposition="bottom" data-tooltiptype="normal" data-tooltiptext="Normal Bottom">A Message</div>
+</div> <!-- end samplearea -->
+
+<br><br>
+It seems to be working pretty well<p  class="testpc" id="testp"  data-tooltipposition="bottom" data-tooltiptype="normal" > 
+as this tooltip </p> is generated within Google Apps Script. 
+
+</div><!-- end left -->
+
+<div id="right" >
+    <div style="text-align:right"><b><span style="color:rgb(243,243,243)"><span style="background-color:rgb(153,153,153)">28 09 2013</span></span></b></div>
+     <div id="t1"><br>The Tooltip in this <a href="https://script.google.com/d/1-0GUqRVC7o_p7HB2EH4t9Yt92V-eQ8A6j7xjlV_JI07d8AH8ol1_LbkG/edit?usp=sharing" style="text-decoration:none" target="_blank">Google Apps Script Project</a>&nbsp;uses:<br><font color="#666666" size="0.5px">(use your G account for access)</font> </div>
+     <br>- <a href="https://developers.google.com/apps-script/reference/html/html-service" style="text-decoration:none" target="_blank">HtmlService </a>
+     <br>- A very little bid of <a href="https://drive.google.com" style="text-decoration:none" target="_blank">Google Drive </a>
+     <br>- A bid of <a href="http://www.w3schools.com/cssref/" style="text-decoration:none" target="_blank">CSS </a>
+     <br>- A bid of Javascript
+     <br>
+     <br> This script is <a href="http://jquery.com/" style="text-decoration:none" target="_blank">Jquery </a> Free!
+     <br>
+     <br> The idea is that you can use a Tooltip that is generated with dynamic information from Google apps script. 
+      The problem is that when you pass through caja the delay is too big that the mouse out event, cannot find its parrent as it does not exists
+      and the Tooltip stays visible. 
+     
+</div><!-- end right -->
+
+</div> <!-- end container -->
+<div id="testing"></div>
+</div>
+
+
+
+<?!= HtmlService.createHtmlOutputFromFile('javascript').getContent(); ?>
