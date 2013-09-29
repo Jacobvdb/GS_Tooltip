@@ -1,4 +1,4 @@
-function doGet(e) 
+ffunction doGet(e) 
 {
    return HtmlService.createTemplateFromFile("dev_test_tooltip").evaluate()
     .setTitle("DEV TEST Tooltip")
@@ -6,7 +6,7 @@ function doGet(e)
 }  
 
 
-function testGS(toolTipPosition,toolTipType,rect, divid, halfOffSetWith)
+function tooltipGS(toolTipPosition,toolTipType,rect, divid, halfOffSetWith)
 {
   // here I can do anything with the gs services 
   // and return it to my JS function

@@ -3,9 +3,6 @@
 
 function focus(ttPosition,ttType,ttText,ttRect,divid,halfoffsetwidth) 
 {
-  
-  
-
   if (  ttPosition == "bottom"|| ttPosition == "top"|| ttPosition == "left"|| ttPosition == "right" ) 
   {
    var toolTipPosition =ttPosition 
@@ -16,18 +13,18 @@ function focus(ttPosition,ttType,ttText,ttRect,divid,halfoffsetwidth)
    var halfOffsetWidth=halfoffsetwidth
   }
   
-    try {      var atr = this.getAttribute("data-tooltipposition")}
-    catch(e) { var atr = null}
+  try {      var atr = this.getAttribute("data-tooltipposition")}
+  catch(e) { var atr = null}
     
-   if (atr)
-   {
-     this.style.backgroundColor = "rgba(0, 0, 0, .1)";
-     var toolTipPosition = this.getAttribute("data-tooltipposition");
-     var toolTipType = this.getAttribute("data-tooltiptype");
-     var tootTipText = this.getAttribute("data-toolTipText");
-     var rect = this.getBoundingClientRect();
-     var divId = this.id+"tt";
-     var halfOffsetWidth=this.offsetWidth/2;
+  if (atr)
+  {
+    this.style.backgroundColor = "rgba(0, 0, 0, .1)";
+    var toolTipPosition = this.getAttribute("data-tooltipposition");
+    var toolTipType = this.getAttribute("data-tooltiptype");
+    var tootTipText = this.getAttribute("data-toolTipText");
+    var rect = this.getBoundingClientRect();
+    var divId = this.id+"tt";
+    var halfOffsetWidth=this.offsetWidth/2;
    }
    // help for positioning
    //console.log(rect.top + " " + rect.right+ " " + rect.bottom+ " " + rect.left);
@@ -35,17 +32,17 @@ function focus(ttPosition,ttType,ttText,ttRect,divid,halfoffsetwidth)
    
    // The lenght of our tooltip to put it in the middle of 
    // the div it is refering to. Create a dummy first
-    var tempDiv = document.createElement('div');
-    document.body.appendChild(tempDiv);
-    tempDiv.style.fontSize = "10px";    // this should be the same as your style
-    tempDiv.style.position = "absolute";
-    tempDiv.style.left = -1000;
-    tempDiv.style.top = -1000;
-    tempDiv.innerHTML = tootTipText;
-    var width= (tempDiv.clientWidth + 22) ;   // add margins 
-    var height= (tempDiv.clientHeight +12) ;  // add margins
-    document.body.removeChild(tempDiv);
-    tempDiv = null;
+   var tempDiv = document.createElement('div');
+   document.body.appendChild(tempDiv);
+   tempDiv.style.fontSize = "10px";    // this should be the same as your style
+   tempDiv.style.position = "absolute";
+   tempDiv.style.left = -1000;
+   tempDiv.style.top = -1000;
+   tempDiv.innerHTML = tootTipText;
+   var width= (tempDiv.clientWidth + 22) ;   // add margins 
+   var height= (tempDiv.clientHeight +12) ;  // add margins
+   document.body.removeChild(tempDiv);
+   tempDiv = null;
 
 
    var div = document.createElement('div');
@@ -129,12 +126,11 @@ function noFocus()
 {
   this.style.backgroundColor = "transparent";
   document.getElementById(this.id+"tt").parentNode.removeChild(document.getElementById(this.id+"tt"))
-  
 }
 
 
 
-function bindtest()
+function bindTooltip()
 {
    var toolTipPosition =this.getAttribute("data-tooltipposition") 
    var toolTipType =this.getAttribute("data-tooltiptype") 
@@ -142,12 +138,12 @@ function bindtest()
    var divid = this.id+"tt"
    var halfOffSetWith = this.offsetWidth/2
 
-    google.script.run.withSuccessHandler(testJS)
+    google.script.run.withSuccessHandler(tooltipJS)
     .withFailureHandler(showError)
-    .testGS(toolTipPosition,toolTipType,rect,divid,halfOffSetWith);
+    .tooltipGS(toolTipPosition,toolTipType,rect,divid,halfOffSetWith);
 }
 
-function testJS(toolTipArray)
+function tooltipJS(toolTipArray)
 {
    var toolTipPosition = toolTipArray[0]
    var toolTipType = toolTipArray[1]
@@ -155,7 +151,6 @@ function testJS(toolTipArray)
    var rect = toolTipArray[3]
    var divid = toolTipArray[4]
    var halfoffsetwidth = toolTipArray[5]
-   
    focus(toolTipPosition,toolTipType,tootTipText,rect,divid, halfoffsetwidth)
 }
 
@@ -165,8 +160,7 @@ document.getElementById("wtop").addEventListener('mouseover',focus,false);
 document.getElementById("wleft").addEventListener('mouseover',focus,false);
 document.getElementById("wright").addEventListener('mouseover',focus,false);
 document.getElementById("wbottom").addEventListener('mouseover',focus,false);
-
-document.getElementById("testp").addEventListener('mouseover',bindtest,false);
+document.getElementById("testgs").addEventListener('mouseover',bindTooltip,false);
 
 /* bind the elements mouseout event to the focus function */
 document.getElementById("title").addEventListener('mouseout',noFocus,false);
@@ -174,18 +168,12 @@ document.getElementById("wright").addEventListener('mouseout',noFocus,false);
 document.getElementById("wtop").addEventListener('mouseout',noFocus,false);
 document.getElementById("wleft").addEventListener('mouseout',noFocus,false);
 document.getElementById("wbottom").addEventListener('mouseout',noFocus,false);
-document.getElementById("testp").addEventListener('mouseout',noFocus,false);
+document.getElementById("testgs").addEventListener('mouseout',noFocus,false);
 
 function showError(error) 
 {
     console.log(error);
     window.alert('An error has occurred, please try again.');
 }
-
-
-function pausecomp(ms) {
-ms += new Date().getTime();
-while (new Date() < ms){}
-} 
 
 </script>
