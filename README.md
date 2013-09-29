@@ -1,4 +1,6 @@
 <h1>Tooltip for Google Apps Script </h1>
+
+![Tooltip Example](https://lh3.googleusercontent.com/-KQzdr5c3WZM/UkeJarqxWXI/AAAAAAAAA2s/l0iFEeYz6rE/s490/Tooltip_example.PNG "Tooltip Example")
 <hr>
 <h3>HTML FILE </h3>
 <br>In the HTML file you add three data-* tags to identify the tooltip.
